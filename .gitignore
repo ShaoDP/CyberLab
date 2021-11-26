@@ -1,0 +1,12 @@
+#git ignore for Matlab Project
+#ignore slprj folder
+*/slprj/
+/slprj/
+
+#ignore following files;
+*asv
+*slxc
+*mexmaci64
+*mexmaci32
+*mexw32
+*mexw64
