@@ -20,9 +20,9 @@ for i=1:N+1
     %    delta_r:   rudder angle (rad)
     %    delta_s:   aft stern plane (rad)
     %    n:         propeller revolution (rpm)
-    delta_r = 30*pi/180;
-    delta_s = -30*pi/180;
-    n = 4000;
+    delta_r =  30*pi/180;
+    delta_s =  50*pi/180;
+    n = 1500;
 
     ui = [delta_r delta_s n]';
 
@@ -41,7 +41,7 @@ end
 t     = xout(:,1);
 u     = xout(:,2); 
 v     = xout(:,3);         
-w     = xout(:,4)*180/pi; 
+w     = xout(:,4); 
 p     = xout(:,5);
 q     = xout(:,6);
 r     = xout(:,7)*180/pi;
@@ -51,7 +51,7 @@ z     = xout(:,10);
 phi   = xout(:,11)*180/pi;
 theta = xout(:,12)*180/pi;
 psi   = xout(:,13)*180/pi;
-U     = xout(:,8);
+U     = xout(:,14);
 
 % plots
 figure(1)
