@@ -4,6 +4,7 @@
 /slprj/
 
 #ignore following files;
+*autosave
 *asv
 *slxc
 *mexmaci64
