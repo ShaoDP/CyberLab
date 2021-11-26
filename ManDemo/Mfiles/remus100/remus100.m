@@ -41,7 +41,7 @@ if (length(ui) ~= 3),error('u-vector must have dimension 3!'); end
 % Constants
 mu = 63.446827;         % Lattitude for Trondheim (deg)
 g_mu = gravity(mu);     % gravity vector (m/s2)
-rho = 1026;             % density of water (m/s2)
+rho = 1026;             % density of water (kg/m3)
 
 % State vectors and control inputs
 nu = x(1:6); 
@@ -146,7 +146,7 @@ Y_r = -0.5 * rho * U_r^2 * A_r * CL_delta_r * delta_r;    % rudder sway force
 N_r = x_r * Y_r;                                          % rudder yaw moment
 
 X_s = -0.5 * rho * U_r^2 * A_s * CL_delta_s * delta_s^2;  % stern-plane drag
-Z_s = -0.5 * rho * U_r^2 * A_s * CL_delta_s * delta_s;    % stern-plane heave force
+Z_s =  0.5 * rho * U_r^2 * A_s * CL_delta_s * delta_s;    % stern-plane heave force
 M_s =  x_s * Z_s;                                         % stern-plane pitch moment
 
 tau = zeros(6,1);                                % generalized force vector
