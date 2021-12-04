@@ -1,4 +1,4 @@
-function [M,N] = clarke83(U,L,B,T,Cb,R66,xg,T_surge)
+function [M,C,D] = clarke83(U,L,B,T,Cb,R66,xg,T_surge)
 % [M,N] = clarke83(U,L,B,T,Cb,R66,xg,T_surge) computes the system matrices 
 % of a linear maneuvering model based on Clarke et al. (1983). The  
 % hydrodynamic derivatives are based on multiple  linear regression from two 
@@ -56,8 +56,8 @@ Xudot = -0.1 * m;
 if (nargin == 7)
     T_surge = L; 
 end
-U = U + 0.001; % avoid singularity for U = 0;
-Xu = -((m-Xudot)/T_surge) / (0.5 * rho * L^2 * U);  
+UU = sqrt(U(1)^2 + U(2)^2) + 0.001; % avoid singularity for U = 0;
+Xu = -((m-Xudot)/T_surge) / (0.5 * rho * L^2 * UU);
 Xudot = Xudot / (0.5 * rho * L^3);
 
 % Nondimenisonal hydrodynamic derivatives in sway and yaw
@@ -87,8 +87,8 @@ T    = diag([1 1 1/L]);
 Tinv = diag([1 1 L]);
 
 MA = (0.5 * rho * L^3) * Tinv^2 * (T * MA_prime * Tinv);
-N =  (0.5 * rho * L^2 * U) * Tinv^2 * (T * N_prime * Tinv);
- 
+D =  (0.5 * rho * L^2 * UU) * Tinv^2 * (T * N_prime * Tinv);
+C = zeros(3, 3);
 M = MRB + MA;       % system inertia matrix
 
  
