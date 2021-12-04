@@ -90,6 +90,3 @@ MA = (0.5 * rho * L^3) * Tinv^2 * (T * MA_prime * Tinv);
 D =  (0.5 * rho * L^2 * UU) * Tinv^2 * (T * N_prime * Tinv);
 C = zeros(3, 3);
 M = MRB + MA;       % system inertia matrix
-
- 
- 
